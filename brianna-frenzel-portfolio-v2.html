@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brianna Frenzel – Marketing & Communications</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --ink: #1A1410;
+    --brown: #6B4C3B;
+    --terracotta: #C4714A;
+    --sage: #7A9E87;
+    --gold: #D4A853;
+    --light: #F0EBE3;
+    --mid: #C8BFB4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--light);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--brown);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 3rem 3rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%;
+    width: 55vw; height: 55vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,113,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { animation: fadeUp 0.9s ease both; }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--brown);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #4A3D35;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-primary {
+    background: var(--terracotta);
+    color: #fff;
+    border: 2px solid var(--terracotta);
+  }
+  .btn-primary:hover { background: var(--brown); border-color: var(--brown); }
+  .btn-outline {
+    background: transparent;
+    color: var(--brown);
+    border: 2px solid var(--brown);
+  }
+  .btn-outline:hover { background: var(--brown); color: #fff; }
+
+  .hero-visual {
+    animation: fadeUp 0.9s 0.2s ease both;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+  .hero-card {
+    background: var(--warm-white);
+    border: 1px solid var(--light);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 24px rgba(107,76,59,0.08);
+    position: relative;
+  }
+  .hero-card-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.5rem;
+  }
+  .hero-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--brown);
+  }
+  .hero-card-sub {
+    font-size: 0.82rem;
+    color: #7A6E66;
+    margin-top: 0.25rem;
+  }
+  .hero-card.accent { background: var(--terracotta); border-color: var(--terracotta); }
+  .hero-card.accent .hero-card-label { color: rgba(255,255,255,0.6); }
+  .hero-card.accent .hero-card-value { color: #fff; }
+  .hero-card.accent .hero-card-sub { color: rgba(255,255,255,0.75); }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 3rem; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .section-intro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4A3D35;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--warm-white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #3D3028;
+    margin-bottom: 1.25rem;
+  }
+  .about-facts { display: flex; flex-direction: column; gap: 1rem; }
+  .fact-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.1rem 1.5rem;
+    background: var(--cream);
+    border-left: 3px solid var(--terracotta);
+    border-radius: 2px;
+  }
+  .fact-icon { font-size: 1.3rem; }
+  .fact-content {}
+  .fact-title { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+  .fact-sub { font-size: 0.78rem; color: #7A6E66; margin-top: 0.1rem; }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--cream); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--warm-white);
+    border: 1px solid var(--light);
+    padding: 2rem;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,76,59,0.1); }
+  .skill-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .skill-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--brown); margin-bottom: 0.75rem; }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.85rem;
+    color: #5A4E46;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--light);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-list li::before { content: '→'; color: var(--terracotta); font-size: 0.75rem; }
+
+  /* ── PORTFOLIO ── */
+  .portfolio { background: var(--ink); color: var(--cream); }
+  .portfolio .section-label { color: var(--gold); }
+  .portfolio .section-title { color: var(--cream); }
+  .portfolio .section-intro { color: rgba(250,247,242,0.7); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: #2A201A;
+    border: 1px solid #3A2E26;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { transform: translateY(-4px); border-color: var(--terracotta); }
+  .project-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-thumb.social { background: linear-gradient(135deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C); }
+  .project-thumb.campaign { background: linear-gradient(135deg, #C4714A, #D4A853); }
+  .project-thumb.docs { background: linear-gradient(135deg, #7A9E87, #4A7D5E); }
+  .project-thumb.coming { background: #1A1410; border: 2px dashed #3A2E26; }
+  .coming-text { color: #3A2E26; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  .project-body { padding: 1.5rem; }
+  .project-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .project-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.82rem; line-height: 1.6; color: rgba(250,247,242,0.55); }
+  .project-toggle { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-top: 0.75rem; cursor: pointer; }
+  .project-detail-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .project-detail-list { list-style: none; padding: 0; }
+  .project-detail-list li { font-size: 0.8rem; line-height: 1.6; color: rgba(250,247,242,0.65); padding: 0.25rem 0 0.25rem 1rem; position: relative; border-bottom: 1px solid #2A201A; }
+  .project-detail-list li:last-child { border-bottom: none; }
+  .project-detail-list li::before { content: '→'; position: absolute; left: 0; color: var(--terracotta); font-size: 0.7rem; line-height: 1.8; }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--warm-white); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--terracotta), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+  .timeline-dot {
+    position: absolute; left: -2.55rem; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 2px solid var(--warm-white);
+    box-shadow: 0 0 0 3px rgba(196,113,74,0.2);
+  }
+  .timeline-date { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.3rem; }
+  .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .timeline-org { font-size: 0.85rem; color: var(--brown); margin-bottom: 0.75rem; font-style: italic; }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #4A3D35;
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    position: relative;
+  }
+  .timeline-bullets li::before { content: '·'; position: absolute; left: 0; color: var(--terracotta); font-size: 1.2rem; line-height: 1.4; }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--cream);
+    text-align: center;
+  }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--brown);
+    padding: 0.75rem 1.5rem;
+    border: 1.5px solid var(--mid);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(250,247,242,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
+    .hero-visual { align-items: stretch; }
+    .hero-card { max-width: 100%; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Brianna Frenzel</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Marketing & Communications</div>
+    <h1 class="hero-name">Brianna<br><em>Frenzel</em></h1>
+    <p class="hero-desc">
+      Communications student, higher ed professional, and aspiring marketer based in the Dallas–Fort Worth area. I turn complex information into clear, compelling content.
+    </p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card accent">
+      <div class="hero-card-label">Currently Pursuing</div>
+      <div class="hero-card-value">B.A. Communications</div>
+      <div class="hero-card-sub">UT Permian Basin · Dec 2026</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Certification</div>
+      <div class="hero-card-value">Google Digital Marketing</div>
+      <div class="hero-card-sub">Foundations in Digital Marketing & E-Commerce</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Experience</div>
+      <div class="hero-card-value">5+ Years</div>
+      <div class="hero-card-sub">Higher Education · Communication · Operations</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">Communicator<br>by nature.</h2>
+      <p>
+        I've spent five years working in higher education — writing policy manuals, leading cross-campus teams, and helping students navigate complex systems. Along the way, I realized that what I love most is the communication itself: making things clear, accessible, and human.
+      </p>
+      <p>
+        Now I'm channeling that into marketing. I'm studying Communications at UT Permian Basin, certified in Google Digital Marketing, and looking to bring my organizational strengths and genuine love of storytelling to a marketing internship.
+      </p>
+      <p>
+        Outside of work and school, I run a small Instagram account for my Siberian Husky, Luna — which has quietly taught me more about content strategy, audience engagement, and consistency than I expected.
+      </p>
+    </div>
+    <div class="about-facts">
+      <div class="fact-row">
+        <div class="fact-icon">🎓</div>
+        <div class="fact-content">
+          <div class="fact-title">University of Texas Permian Basin</div>
+          <div class="fact-sub">B.A. Communications · Anticipated Dec 2026 · Courses: Principles of Marketing, Social Media Marketing</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">📍</div>
+        <div class="fact-content">
+          <div class="fact-title">Dallas–Fort Worth, TX</div>
+          <div class="fact-sub">Open to hybrid & in-person internships</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">🏫</div>
+        <div class="fact-content">
+          <div class="fact-title">Tarrant County College</div>
+          <div class="fact-sub">Student Development Associate · 2020–Present</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">🤝</div>
+        <div class="fact-content">
+          <div class="fact-title">10 Years of Volunteering</div>
+          <div class="fact-sub">Special Olympics · Unhindered Special Needs Ministry</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">🐾</div>
+        <div class="fact-content">
+          <div class="fact-title">Content Creator</div>
+          <div class="fact-sub">@lunathe_siberian_husky on Instagram</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">What I Bring</div>
+  <h2 class="section-title">Skills & Tools</h2>
+  <p class="section-intro">A blend of marketing knowledge, communication instincts, and operational discipline — built across five years in higher education and ongoing academic study.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📣</div>
+      <div class="skill-title">Marketing</div>
+      <ul class="skill-list">
+        <li>Social Media Marketing Strategy</li>
+        <li>Digital Marketing Strategy</li>
+        <li>SEO Fundamentals</li>
+        <li>Email Marketing</li>
+        <li>Content Creation & Planning</li>
+        <li>Campaign Design & Analytics</li>
+        <li>Influencer Marketing</li>
+        <li>SWOT & Market Analysis</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-title">Social Media</div>
+      <ul class="skill-list">
+        <li>Instagram Content & Strategy</li>
+        <li>Caption Writing</li>
+        <li>Audience Engagement</li>
+        <li>Brand Voice & Consistency</li>
+        <li>Analytics & Insights</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">✍️</div>
+      <div class="skill-title">Communication</div>
+      <ul class="skill-list">
+        <li>Professional Writing</li>
+        <li>Policy Documentation</li>
+        <li>Presentations</li>
+        <li>Student & Stakeholder Relations</li>
+        <li>Cross-team Collaboration</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛠️</div>
+      <div class="skill-title">Tools</div>
+      <ul class="skill-list">
+        <li>Microsoft Office 365</li>
+        <li>Google Suite</li>
+        <li>Laserfiche</li>
+        <li>Testing & LMS Platforms</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🏅</div>
+      <div class="skill-title">Certifications</div>
+      <ul class="skill-list">
+        <li>Google – Digital Marketing & E-Commerce</li>
+        <li>FERPA Compliance</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💡</div>
+      <div class="skill-title">Core Strengths</div>
+      <ul class="skill-list">
+        <li>Organization & Accuracy</li>
+        <li>Leadership</li>
+        <li>Problem-Solving</li>
+        <li>Inclusive Communication</li>
+        <li>Data Integrity</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Work & Projects</h2>
+  <p class="section-intro">Real marketing work — from competitive campaign strategies and brand audits to social media planning and content creation. Built across two marketing courses and hands-on experience.</p>
+  <div class="portfolio-grid">
+
+    <div class="project-card" onclick="toggleProject('p1')">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #C4714A, #D4A853);">📣</div>
+      <div class="project-body">
+        <div class="project-tag">Social Media Marketing · MRKT 4322</div>
+        <div class="project-title">The Gingerbread Twins — Full Social Media Strategy</div>
+        <div class="project-desc">End-to-end social media marketing strategy for a small bakery brand, including content marketing plan, Mother's Day campaign design, influencer strategy, crisis management plan, and analytics framework.</div>
+        <div class="project-expand" id="p1" style="display:none; margin-top:1rem; border-top:1px solid #3A2E26; padding-top:1rem;">
+          <div class="project-detail-label">What I built:</div>
+          <ul class="project-detail-list">
+            <li>Content marketing plan across blogs, podcasts & influencer collabs targeting 18–50 demographics</li>
+            <li>#TGBTMomDay photo contest campaign with goals: +25% followers, +30% engagement, +40% web traffic</li>
+            <li>Micro-influencer strategy with vetting criteria and partnership brief</li>
+            <li>Social media crisis response playbook covering 4 risk scenarios</li>
+            <li>Analytics plan with defined KPIs: engagement rate, reach, CTR, conversion rate, follower growth</li>
+            <li>Campaign rolled out across Facebook, Instagram & TikTok</li>
+          </ul>
+        </div>
+        <div class="project-toggle">▾ See details</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleProject('p2')">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #3A5A8C, #5B82B5);">🏗️</div>
+      <div class="project-body">
+        <div class="project-tag">Marketing Plan · MRKT 3300</div>
+        <div class="project-title">Southwest Glazing Supply — Marketing Campaign Plan</div>
+        <div class="project-desc">Comprehensive marketing campaign for a DFW-area small business with no digital presence — including competitive analysis, situation analysis, target market strategy, and campaign recommendations.</div>
+        <div class="project-expand" id="p2" style="display:none; margin-top:1rem; border-top:1px solid #3A2E26; padding-top:1rem;">
+          <div class="project-detail-label">What I built:</div>
+          <ul class="project-detail-list">
+            <li>Business & product analysis for a 45-year-old glazing supply company with zero digital marketing</li>
+            <li>Competitive analysis of Strybuc, C.R. Laurence, Home Depot & Lowe's using Google Trends & IBISWorld data</li>
+            <li>External environmental scan: Texas construction boom, weather-driven demand, pricing factors</li>
+            <li>Drafted original mission & vision statements for the client</li>
+            <li>Proposed vinyl beading campaign targeting professional contractors & DIY homeowners</li>
+            <li>Recommended social media presence + Google Business Profile to address brand invisibility</li>
+          </ul>
+        </div>
+        <div class="project-toggle">▾ See details</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleProject('p3')">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #7A9E87, #4A7D5E);">📝</div>
+      <div class="project-body">
+        <div class="project-tag">Business Proposal · MRKT 3300</div>
+        <div class="project-title">Southwest Glazing — Brand & Digital Audit</div>
+        <div class="project-desc">Initial business proposal identifying Southwest Glazing's core marketing gaps — lack of brand identity, no digital strategy, and undefined target messaging — with a proposed product focus for the campaign.</div>
+        <div class="project-expand" id="p3" style="display:none; margin-top:1rem; border-top:1px solid #3A2E26; padding-top:1rem;">
+          <div class="project-detail-label">What I built:</div>
+          <ul class="project-detail-list">
+            <li>Diagnosed marketing deficiencies: no social media, weak mission statement, no target messaging</li>
+            <li>Applied textbook marketing frameworks (Brand You, sociocultural environment, digital disruption)</li>
+            <li>Identified vinyl beading product line as campaign focus with dual target audience rationale</li>
+            <li>Proposed audience segmentation: "Professional Contractors' Choice" vs. "DIY Window Repairs"</li>
+          </ul>
+        </div>
+        <div class="project-toggle">▾ See details</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleProject('p4')">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #E8A838, #C4714A);">⚾</div>
+      <div class="project-body">
+        <div class="project-tag">Feature Writing · Journalism / Comm</div>
+        <div class="project-title">Banana Ball: Baseball but More Show Business</div>
+        <div class="project-desc">Published-quality feature article on the Texas Tailgaters — a new Banana Ball team — covering brand storytelling, fan experience, and event marketing strategy through first-hand reporting.</div>
+        <div class="project-expand" id="p4" style="display:none; margin-top:1rem; border-top:1px solid #3A2E26; padding-top:1rem;">
+          <div class="project-detail-label">What I built:</div>
+          <ul class="project-detail-list">
+            <li>Feature-length article covering the Texas Tailgaters' inaugural season in the Banana Ball league</li>
+            <li>Analyzed the brand's "Fans First" entertainment philosophy and its community marketing impact</li>
+            <li>Embedded multimedia references: TikTok, Instagram, live events at Riders Field (Frisco)</li>
+            <li>Covered sold-out 20,000+ fan headliner events across DFW and Texas stadiums</li>
+            <li>Demonstrated brand storytelling, narrative writing, and audience-first content approach</li>
+          </ul>
+        </div>
+        <div class="project-toggle">▾ See details</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleProject('p5')">
+      <div class="project-thumb social">🐾</div>
+      <div class="project-body">
+        <div class="project-tag">Social Media · Organic Content Creation</div>
+        <div class="project-title">@lunathe_siberian_husky — Instagram Brand</div>
+        <div class="project-desc">Personal Instagram account built around Luna, a Siberian Husky — practicing real content strategy, caption writing, audience engagement, and consistent brand voice outside the classroom.</div>
+        <div class="project-expand" id="p5" style="display:none; margin-top:1rem; border-top:1px solid #3A2E26; padding-top:1rem;">
+          <div class="project-detail-label">What I practice:</div>
+          <ul class="project-detail-list">
+            <li>Developing a niche content niche and consistent aesthetic for a pet brand</li>
+            <li>Writing captions that balance personality, engagement hooks, and brand voice</li>
+            <li>Growing an organic audience with no paid promotion</li>
+            <li>Real-world application of social media principles studied in MRKT 4322</li>
+          </ul>
+        </div>
+        <div class="project-toggle">▾ See details</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb campaign">📋</div>
+      <div class="project-body">
+        <div class="project-tag">Internal Communications · Professional</div>
+        <div class="project-title">TCC District-Wide Operating Manual</div>
+        <div class="project-desc">Authored and maintain the official Testing Services policy and procedures manual used across all Tarrant County College campuses — a real-world content writing and documentation project reaching 6 campuses district-wide.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Where I've Been</h2>
+  <p class="section-intro">Five years of professional experience, a decade of volunteering, and a lifetime of learning how to communicate clearly.</p>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Apr 2023 – Present</div>
+      <div class="timeline-title">Student Development Associate</div>
+      <div class="timeline-org">Tarrant County College – Northwest Campus · Fort Worth, TX</div>
+      <ul class="timeline-bullets">
+        <li>Authored and maintain the district-wide Testing Services operating manual across all TCC campuses</li>
+        <li>Lead bi-weekly cross-campus staff meetings to review policies and improve operations</li>
+        <li>Manage complex data with 95% accuracy and 100% FERPA compliance</li>
+        <li>First point of contact for student inquiries via phone, email, and in person</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Feb 2020 – Apr 2023</div>
+      <div class="timeline-title">Student Development Assistant</div>
+      <div class="timeline-org">Tarrant County College – Northwest Campus · Fort Worth, TX</div>
+      <ul class="timeline-bullets">
+        <li>Supported Enrollment Services through student outreach and recruitment activities</li>
+        <li>Maintained confidential student records in compliance with FERPA regulations</li>
+        <li>Oversaw revenue collection and accounting for Testing Services</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Spring 2013 – Spring 2023</div>
+      <div class="timeline-title">Assistant Coach</div>
+      <div class="timeline-org">Special Olympics · Fort Worth, TX</div>
+      <ul class="timeline-bullets">
+        <li>Developed structured training sessions tailored to athletes of diverse ability levels</li>
+        <li>Fostered inclusive team culture built on encouragement and goal-setting</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Fall 2014 – Spring 2020</div>
+      <div class="timeline-title">Student Ministry Volunteer</div>
+      <div class="timeline-org">Unhindered Special Needs Ministry · Fort Worth, TX</div>
+      <ul class="timeline-bullets">
+        <li>Supported children and adults with special needs (ages 8–30) in a weekly ministry setting</li>
+        <li>Provided one-on-one assistance to promote engagement, inclusion, and participation</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Open to Internship<br>Opportunities</h2>
+    <p class="section-intro" style="margin: 0 auto 0;">
+      I'm actively seeking marketing and communications internships in the Dallas–Fort Worth area. If you think we'd be a good fit, I'd love to hear from you.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:Briannafrenzel20@gmail.com" class="contact-link">
+        <span>✉️</span> Briannafrenzel20@gmail.com
+      </a>
+      <a href="tel:6823009605" class="contact-link">
+        <span>📞</span> 682-300-9605
+      </a>
+      <a href="https://www.linkedin.com/in/brianna-frenzel" target="_blank" class="contact-link">
+        <span>💼</span> LinkedIn Profile
+      </a>
+      <a href="https://www.instagram.com/lunathe_siberian_husky" target="_blank" class="contact-link">
+        <span>🐾</span> @lunathe_siberian_husky
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Brianna Frenzel · Marketing & Communications · Dallas–Fort Worth, TX
+</footer>
+
+<script>
+  // Project card expand/collapse
+  function toggleProject(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const isOpen = el.style.display === 'block';
+    el.style.display = isOpen ? 'none' : 'block';
+    const toggle = el.nextElementSibling;
+    if (toggle) toggle.textContent = isOpen ? '▾ See details' : '▴ Hide details';
+  }
+
+  // Timeline scroll animation
+  const items = document.querySelectorAll('.timeline-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(item => observer.observe(item));
+</script>
+
+</body>
+</html>
